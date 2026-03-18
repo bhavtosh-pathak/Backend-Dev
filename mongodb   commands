@@ -1,0 +1,310 @@
+use college
+switched to db college
+db.createCollection("students")
+{ ok: 1 }
+db.students.insertMany([{name:"hemant",branch:"cs"},{name:"akash",branch:"mechanical"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69ba673f65b73fadea93e67a'),
+    '1': ObjectId('69ba673f65b73fadea93e67b')
+  }
+}
+db.students.findOne({name:"hemant"})
+{
+  _id: ObjectId('69ba673f65b73fadea93e67a'),
+  name: 'hemant',
+  branch: 'cs'
+}
+db.students.find()
+{
+  _id: ObjectId('69b92e6bc1e8e82c54300cae'),
+  name: 'bhavtosh',
+  course: 'b.tech'
+}
+{
+  _id: ObjectId('69b92e6bc1e8e82c54300caf'),
+  name: 'akash',
+  course: 'arts'
+}
+{
+  _id: ObjectId('69ba673f65b73fadea93e67a'),
+  name: 'hemant',
+  branch: 'cs'
+}
+{
+  _id: ObjectId('69ba673f65b73fadea93e67b'),
+  name: 'akash',
+  branch: 'mechanical'
+}
+db.students.updateOne({name:"akash"},{$set:{branch:"cs"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.students.find()
+{
+  _id: ObjectId('69b92e6bc1e8e82c54300cae'),
+  name: 'bhavtosh',
+  course: 'b.tech'
+}
+{
+  _id: ObjectId('69b92e6bc1e8e82c54300caf'),
+  name: 'akash',
+  course: 'arts',
+  branch: 'cs'
+}
+{
+  _id: ObjectId('69ba673f65b73fadea93e67a'),
+  name: 'hemant',
+  branch: 'cs'
+}
+{
+  _id: ObjectId('69ba673f65b73fadea93e67b'),
+  name: 'akash',
+  branch: 'mechanical'
+}
+ 
+db.students.deleteOne({name:"akash"})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.students.find()
+{
+  _id: ObjectId('69b92e6bc1e8e82c54300cae'),
+  name: 'bhavtosh',
+  course: 'b.tech'
+}
+{
+  _id: ObjectId('69ba673f65b73fadea93e67a'),
+  name: 'hemant',
+  branch: 'cs'
+}
+{
+  _id: ObjectId('69ba673f65b73fadea93e67b'),
+  name: 'akash',
+  branch: 'mechanical'
+}
+ 
+db.students.drop()
+true
+drop college
+SyntaxError: Missing semicolon. (1:4)
+
+> 1 | drop college
+    |     ^
+ 
+db.drop()
+TypeError: db.drop is not a function
+db.dropDatabse()
+TypeError: db.dropDatabse is not a function
+db.dropDatabase()
+{ ok: 1, dropped: 'college' }
+show dbs
+admin           40.00 KiB
+authtestapp     64.00 KiB
+config         108.00 KiB
+local           76.00 KiB
+mongopractice   68.00 KiB
+testapp1        64.00 KiB
+use college
+already on db college
+db.createCollection
+[Function: createCollection] AsyncFunction {
+  apiVersions: [ 1, Infinity ],
+  returnsPromise: true,
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  topologies: [ 'ReplSet', 'Standalone', 'Sharded', 'LoadBalanced' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  newShellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+db.createCollection("students")
+{ ok: 1 }
+db.students.insertMany([{name:"piyush",age:20,course:"b.tech",city:"kanpur",feePaid:"true"},{name:"piyush",age:10,course:"bca",city:"agra",feePaid:"false"},{name:"akash",age:20,course:"bsc",city:"akola",feePaid:"true"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69ba74bb65b73fadea93e67c'),
+    '1': ObjectId('69ba74bb65b73fadea93e67d'),
+    '2': ObjectId('69ba74bb65b73fadea93e67e')
+  }
+}
+db.students.find()
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67c'),
+  name: 'piyush',
+  age: 20,
+  course: 'b.tech',
+  city: 'kanpur',
+  feePaid: 'true'
+}
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67d'),
+  name: 'piyush',
+  age: 10,
+  course: 'bca',
+  city: 'agra',
+  feePaid: 'false'
+}
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67e'),
+  name: 'akash',
+  age: 20,
+  course: 'bsc',
+  city: 'akola',
+  feePaid: 'true'
+}
+db.students.find({course:"bca"})
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67d'),
+  name: 'piyush',
+  age: 10,
+  course: 'bca',
+  city: 'agra',
+  feePaid: 'false'
+}
+db.students.find({age:{$gt:20}})
+db.students.updateOne({name:"akash"},{$set:{city:"bombay"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.students.find({name:"akash"})
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67e'),
+  name: 'akash',
+  age: 20,
+  course: 'bsc',
+  city: 'bombay',
+  feePaid: 'true'
+}
+db.students.updateOne({name:"piyush"},{$set:{course:"mca"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.students.find({name:"piyush"})
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67c'),
+  name: 'piyush',
+  age: 20,
+  course: 'mca',
+  city: 'kanpur',
+  feePaid: 'true'
+}
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67d'),
+  name: 'piyush',
+  age: 10,
+  course: 'bca',
+  city: 'agra',
+  feePaid: 'false'
+}
+db.students.updateMany({name:"piyush"},{$set:{course:"mca"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.students.find()
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67c'),
+  name: 'piyush',
+  age: 20,
+  course: 'mca',
+  city: 'kanpur',
+  feePaid: 'true'
+}
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67d'),
+  name: 'piyush',
+  age: 10,
+  course: 'mca',
+  city: 'agra',
+  feePaid: 'false'
+}
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67e'),
+  name: 'akash',
+  age: 20,
+  course: 'bsc',
+  city: 'bombay',
+  feePaid: 'true'
+}
+db.students.find({},{name:1,course:1})
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67c'),
+  name: 'piyush',
+  course: 'mca'
+}
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67d'),
+  name: 'piyush',
+  course: 'mca'
+}
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67e'),
+  name: 'akash',
+  course: 'bsc'
+}
+db.students.updateOne({age:{$gt:20}},{$set:{feePaid:"true"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+db.students.deleteMany({feePaid:"false"})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.students.deleteMany({age:{$lt:20}})
+{
+  acknowledged: true,
+  deletedCount: 0
+}
+db.students.deleteOne({age:{$lt:20}})
+{
+  acknowledged: true,
+  deletedCount: 0
+}
+db.students.find()
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67c'),
+  name: 'piyush',
+  age: 20,
+  course: 'mca',
+  city: 'kanpur',
+  feePaid: 'true'
+}
+{
+  _id: ObjectId('69ba74bb65b73fadea93e67e'),
+  name: 'akash',
+  age: 20,
+  course: 'bsc',
+  city: 'bombay',
+  feePaid: 'true'
+}
+college
+
+
